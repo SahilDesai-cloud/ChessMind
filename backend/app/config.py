@@ -3,11 +3,16 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 def _normalize_database_url(url: str) -> str:
-    """Ensure SQLAlchemy async driver is used."""
+    """Ensure SQLAlchemy async driver + SSL for hosted Postgres (e.g. Render)."""
     if url.startswith("postgres://"):
         url = url.replace("postgres://", "postgresql://", 1)
     if url.startswith("postgresql://") and "+asyncpg" not in url:
         url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
+
+    local = "localhost" in url or "127.0.0.1" in url
+    if not local and "ssl=" not in url and "sslmode=" not in url:
+        sep = "&" if "?" in url else "?"
+        url = f"{url}{sep}ssl=require"
     return url
 
 

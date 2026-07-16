@@ -11,6 +11,10 @@ services:
         value: /usr/games/stockfish
       - key: STOCKFISH_DEPTH
         value: "15"
+      - key: INACCURACY_THRESHOLD
+        value: "-1.0"
+      - key: MISTAKE_THRESHOLD
+        value: "-1.5"
       - key: EXPLAIN_EVAL_THRESHOLD
         value: "-1.5"
       - key: ANTHROPIC_API_KEY
