@@ -1,0 +1,150 @@
+.coach__header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.03em;
+}
+
+.coach__header p {
+  margin: 0 0 1.5rem;
+  color: var(--ink-muted);
+  max-width: 44ch;
+}
+
+.coach__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+}
+
+.coach__summary div {
+  min-width: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+}
+
+.coach__summary strong {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  color: var(--accent-soft);
+}
+
+.coach__summary span {
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.coach__insight {
+  margin: 0 0 1.35rem;
+  padding: 0.95rem 1.05rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(201, 162, 39, 0.08);
+  max-width: 58ch;
+  font-size: 1.05rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.coach__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.15rem;
+}
+
+.coach__filters button {
+  border: 1px solid var(--line-strong);
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--ink-muted);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  min-height: 40px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.coach__filters button.is-active {
+  background: var(--accent);
+  color: #1a1408;
+  border-color: var(--accent);
+}
+
+.coach__charts {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(240px, 0.8fr);
+  gap: 1rem;
+}
+
+.coach__chart {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 0.75rem 0.75rem;
+}
+
+.coach__chart h2 {
+  margin: 0 0 0.5rem 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.coach__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0 0.5rem 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.coach__legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.coach__legend span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.coach__muted {
+  color: var(--ink-muted);
+}
+
+.coach__error {
+  color: var(--danger-soft);
+}
+
+.coach__pulse {
+  animation: pulse 1.4s ease infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 860px) {
+  .coach__charts {
+    grid-template-columns: 1fr;
+  }
+}

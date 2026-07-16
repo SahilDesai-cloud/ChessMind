@@ -1,0 +1,64 @@
+.eval-graph {
+  margin-top: 1rem;
+}
+
+.eval-graph__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+}
+
+.eval-graph__head h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.eval-graph__head span {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.eval-graph__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+
+.eval-graph__zero {
+  stroke: var(--line-strong);
+  stroke-dasharray: 3 4;
+}
+
+.eval-graph__area {
+  fill: rgba(201, 162, 39, 0.12);
+}
+
+.eval-graph__line {
+  fill: none;
+  stroke: var(--accent-soft);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.eval-graph__dot {
+  fill: var(--ink-muted);
+  cursor: pointer;
+  transition: r 0.15s ease;
+}
+
+.eval-graph__dot.is-mistake {
+  fill: var(--danger);
+}
+
+.eval-graph__dot.is-active {
+  fill: var(--accent);
+  stroke: #1a1408;
+  stroke-width: 1;
+}

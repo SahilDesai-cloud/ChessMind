@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: chessmind
+      POSTGRES_PASSWORD: chessmind
+      POSTGRES_DB: chessmind
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chessmind -d chessmind"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      STOCKFISH_PATH: /usr/games/stockfish
+      STOCKFISH_DEPTH: "15"
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ANTHROPIC_MODEL: ${ANTHROPIC_MODEL:-claude-sonnet-4-20250514}
+      INACCURACY_THRESHOLD: ${INACCURACY_THRESHOLD:--1.0}
+      MISTAKE_THRESHOLD: ${MISTAKE_THRESHOLD:--1.5}
+      EXPLAIN_EVAL_THRESHOLD: ${EXPLAIN_EVAL_THRESHOLD:--1.5}
+      DATABASE_URL: postgresql+asyncpg://chessmind:chessmind@db:5432/chessmind
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
